@@ -1,0 +1,17 @@
+[package]
+name = "delta-rs-write-profiling"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+datafusion = "25.0.0"
+deltalake = { git = "https://github.com/delta-io/delta-rs", rev = "b8bc0f77953c4a516f555b82eadada4b6a5c2dd9", features = ["datafusion"] }
+env_logger = "0.10.0"
+log = "0.4"
+tempfile = "3.4.0"
+tokio = "1.0"
+url = "2.3"
+
+[[bin]]
+name = "delta-rs-write-profiling"
+path = "src/main.rs"
