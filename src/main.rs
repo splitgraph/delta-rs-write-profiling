@@ -18,7 +18,7 @@ async fn main() -> Result<(), deltalake::DeltaTableError> {
     // Create the external table pointing to a public parquet file
     ctx.sql(
         format!(
-            "CREATE EXTERNAL TABLE supply_chains STORED AS PARQUET LOCATION '{}'",
+            "CREATE EXTERNAL TABLE parquet_file STORED AS PARQUET LOCATION '{}'",
             env::args().nth(1).expect("No file for profiling provided")
         )
         .as_str(),
@@ -26,7 +26,7 @@ async fn main() -> Result<(), deltalake::DeltaTableError> {
     .await?;
 
     let scan = ctx
-        .table_provider("supply_chains")
+        .table_provider("parquet_file")
         .await?
         .scan(&state, None, &[], None)
         .await?;

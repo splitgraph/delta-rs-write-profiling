@@ -1,5 +1,9 @@
 #!/bin/bash -e
 
+# Clone and update bytehound submodule
+if [ ! -e "./bytehound/Cargo.toml" ]; then
+    git submodule update --init --recursive
+fi
 # Build bytehound binaries from source if missing
 if [ ! -e "./bytehound/target/release/libbytehound.so" ]; then
     cargo build --manifest-path ./bytehound/Cargo.toml --release -p bytehound-preload
